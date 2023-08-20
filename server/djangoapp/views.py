@@ -122,7 +122,7 @@ def add_review(request, dealer_id):
     if request.user.is_authenticated:
         # GET request renders the page with the form for filling out a review
         if request.method == "GET":
-            url = "your-cloud-function-domain/dealerships/dealer-get?dealerId={dealer_id}"
+            url = "https://79edc216-090d-4565-9d57-999ec15fabbb-bluemix.cloudantnosqldb.appdomain.cloud/dealerships/dealer-get?dealerId={dealer_id}"
             # Get dealer details from the API
             context = {
                 "cars": CarModel.objects.all(),
@@ -151,7 +151,7 @@ def add_review(request, dealer_id):
             else: 
                 review["purchase_date"] = None
 
-            url = "your-cloud-function-domain/api/review"  # API Cloud Function route
+            url = "https://79edc216-090d-4565-9d57-999ec15fabbb-bluemix.cloudantnosqldb.appdomain.cloud/api/review"  # API Cloud Function route
             json_payload = {"review": review}  # Create a JSON payload that contains the review data
 
             # Performing a POST request with the review
